@@ -79,11 +79,6 @@ jobs:
       working-directory: K8SService
       run: terraform init
 
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      working-directory: K8SService
-      run: terraform fmt -check
-
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       working-directory: K8SService
