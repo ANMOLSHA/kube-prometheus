@@ -103,7 +103,7 @@ jobs:
     - name: Azsetsubscription
       run: az account set --subscription 942df1db-c183-4620-9bab-7d053f38277f
     - name: Azgetcredential
-      run: az aks get-credentials --resource-group rg-poc-gryffindor-01 --name gryffindoraks01
+      run: az aks get-credentials --overwrite-existing --resource-group rg-poc-gryffindor-01 --name gryffindoraks01
     
         
     - name: Manifestsetup Apply
