@@ -115,9 +115,9 @@ jobs:
       run: kubectl apply -f manifests/
       
     - name: deploymentwebapp
-      run: kubectl create deployment mobiweb --image=docker/mobywebsite:staging
+      run: kubectl create deployment mobiweb --image=docker/mobywebsite:staging --dry-run=client -o yaml | kubectl apply -f -
     - name: serviceupdate
-      run: kubectl create service loadbalancer mobiweb --tcp=80:80
+      run: kubectl create service loadbalancer mobiweb --tcp=80:80 --dry-run=client -o yaml | kubectl apply -f -
       
    
 
