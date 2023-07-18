@@ -93,3 +93,31 @@ jobs:
       working-directory: K8SService
       # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
+      
+    - name: Kubectl tool installer
+      uses: Azure/setup-kubectl@v3
+      with:
+        # Version of kubectl
+        version: latest 
+    
+    - name: Azsetsubscription
+      run: az account set --subscription 942df1db-c183-4620-9bab-7d053f38277f
+    - name: Azgetcredential
+      run: az aks get-credentials --resource-group rg-poc-gryffindor-01 --name gryffindoraks01
+    
+        
+    - name: Manifestsetup Apply
+      run: kubectl apply --server-side -f manifests/setup
+      
+    - name: Manifest Apply
+      run: kubectl apply -f manifests/
+      
+    - name: deploymentwebapp
+      run: kubectl create deployment mobiweb --image=docker/mobywebsite:staging
+    - name: serviceupdate
+      run: kubectl create service loadbalancer mobiweb --tcp=80:80
+      
+   
+
+      
+   
