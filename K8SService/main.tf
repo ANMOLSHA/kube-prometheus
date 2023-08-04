@@ -10,7 +10,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count          = var.system_node_count
     vm_size             = "Standard_B2s"
     type                = "VirtualMachineScaleSets"
-    // availability_zones  = [1, 2, 3]
+    // availability_zones = [1, 2, 3]
      enable_auto_scaling = true
     max_count = 3
     min_count = 1
